@@ -1,7 +1,5 @@
 true : bin_annot, safe_string, package(bytes), short_paths
 true: warn_error(+1..49+60), warn(A-4-34-41-44)
 
-<src> : include
-
-true: package(result mirage-protocols mirage-device fmt)
-<src/mirage_stack_lwt.*>: package(result ipaddr lwt cstruct mirage-protocols-lwt mirage-device mirage-stack)
+true: package(mirage-protocols mirage-device fmt)
+<src/mirage_stack_lwt.*>: package(mirage-stack ipaddr lwt cstruct)

@@ -13,8 +13,8 @@ let opams =
     Pkg.opam_file ~lint_deps_excluding:(Some no_lint) ~install:false name
   in
   [
-  opam ["lwt"; "mirage-stack"; "mirage-protocols-lwt"; "ipaddr"; "cstruct"; "result"] "opam";
-  opam ["fmt"; "mirage-stack"; "mirage-protocols-lwt"; "result"] "mirage-stack-lwt.opam";
+  opam ["lwt"; "mirage-stack"; "ipaddr"; "cstruct"] "opam";
+  opam ["fmt"; "mirage-device"; "mirage-protocols"] "mirage-stack-lwt.opam";
   ]
 
 let () =
