@@ -15,8 +15,6 @@ depends: [
   "ocamlbuild" {build}
   "topkg" {build & >= "0.8.0"}
   "mirage-stack"
-  "mirage-device"
-  "mirage-protocols"
   "ipaddr"
   "lwt"
   "cstruct"
