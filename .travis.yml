@@ -7,6 +7,5 @@ env:
   - EXTRA_REMOTES="https://github.com/mirage/mirage-dev.git"
   - PINS="mirage-stack.1.0.0:. mirage-stack-lwt.1.0.0:."
   matrix:
-  - OCAML_VERSION=4.02 PACKAGE="mirage-stack-lwt"
   - OCAML_VERSION=4.03 PACKAGE="mirage-stack-lwt"
   - OCAML_VERSION=4.04 PACKAGE="mirage-stack-lwt"
