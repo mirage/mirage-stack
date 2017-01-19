@@ -1,3 +1,3 @@
 ### 1.0.0 (2016-12-29)
 
-import ETHIF, ARP, IP, IPV4, IPV6, TCP, UDP, ICMP module types from mirage-types and mirage-types-lwt
+import V4 module type from mirage-types and mirage-types-lwt, where it was STACKV4
