@@ -1,4 +1,0 @@
-PKG bytes fmt lwt cstruct ipaddr
-PKG mirage-device mirage-protocols
-S src
-B _build/**

@@ -4,7 +4,9 @@ install: wget https://raw.githubusercontent.com/ocaml/ocaml-ci-scripts/master/.t
 script: bash -ex .travis-opam.sh
 env:
   global:
-  - PINS="mirage-stack.1.0.0:. mirage-stack-lwt.1.0.0:."
+  - PINS="mirage-stack:. mirage-stack-lwt:."
+  - REVDEPS=true
+  - DEPOPTS="mirage-stack-lwt"
   matrix:
-  - OCAML_VERSION=4.03 PACKAGE="mirage-stack-lwt"
-  - OCAML_VERSION=4.04 PACKAGE="mirage-stack-lwt"
+  - OCAML_VERSION=4.03
+  - OCAML_VERSION=4.04
