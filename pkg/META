@@ -1,3 +1,0 @@
-description = "MirageOS signatures for network stack implementations"
-version = "%%VERSION_NUM%%"
-requires = "mirage-device mirage-protocols fmt"
