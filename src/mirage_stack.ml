@@ -64,12 +64,15 @@ module type V4 = sig
       Multiple bindings to the same port will overwrite previous
       bindings, so callbacks will not chain if ports clash. *)
 
-  val listen_tcpv4: t -> port:int -> TCPV4.callback -> unit
-  (** [listen_tcpv4 t ~port cb] registers the [cb] callback on the
-      TCPv4 [port] and immediatey return.  If [port] is invalid (not
+  val listen_tcpv4: ?keepalive:Mirage_protocols.Keepalive.t
+    -> t -> port:int -> TCPV4.callback -> unit
+  (** [listen_tcpv4 ~keepalive t ~port cb] registers the [cb] callback
+      on the TCPv4 [port] and immediatey return.  If [port] is invalid (not
       between 0 and 65535 inclusive), it raises [Invalid_argument].
       Multiple bindings to the same port will overwrite previous
-      bindings, so callbacks will not chain if ports clash. *)
+      bindings, so callbacks will not chain if ports clash.
+      If [~keepalive] is provided then these keepalive settings will be
+      applied to the accepted connections before the callback is called. *)
 
   val listen: t -> unit io
   (** [listen t] requests that the stack listen for traffic on the
