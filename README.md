@@ -8,8 +8,8 @@ The set of protocols defined is:
 
 mirage-stack is distributed under the ISC license.
 
-[stackv4]: https://mirage.github.io/mirage-stack/Mirage_stack.html
-[stackv4-lwt]: https://mirage.github.io/mirage-stack/Mirage_stack_lwt.html
+[stackv4]: http://docs.mirage.io/mirage-stack/Mirage_stack/module-type-V4/index.html
+[stackv4-lwt]: http://docs.mirage.io/mirage-stack-lwt/Mirage_stack_lwt/module-type-V4/index.html
 
 ## Installation
 
@@ -26,4 +26,4 @@ The documentation and API reference is generated from the source
 interfaces. It can be consulted [online][doc] or via `odig doc
 mirage-stack`.
 
-[doc]: https://mirage.github.io/mirage-stack/
+[doc]: http://docs.mirage.io/index.html#package-mirage-stack
