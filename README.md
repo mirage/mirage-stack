@@ -22,6 +22,8 @@ instructions.
 
 ## Documentation
 
+[![Build Status](https://travis-ci.org/mirage/mirage-stack.svg?branch=v1.1.0)](https://travis-ci.org/mirage/mirage-stack)
+
 The documentation and API reference is generated from the source
 interfaces. It can be consulted [online][doc] or via `odig doc
 mirage-stack`.
