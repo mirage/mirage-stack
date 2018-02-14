@@ -65,7 +65,7 @@ module type V4 = sig
       bindings, so callbacks will not chain if ports clash. *)
 
   val listen_tcpv4: ?keepalive:Mirage_protocols.Keepalive.t
-    -> t -> port:int -> TCPV4.callback -> unit
+    -> t -> port:int -> (TCPV4.flow -> unit io) -> unit
   (** [listen_tcpv4 ~keepalive t ~port cb] registers the [cb] callback
       on the TCPv4 [port] and immediatey return.  If [port] is invalid (not
       between 0 and 65535 inclusive), it raises [Invalid_argument].
