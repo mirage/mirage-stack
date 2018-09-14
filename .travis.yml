@@ -7,7 +7,6 @@ env:
   - EXTRA_REMOTES="https://github.com/mirage/mirage-dev.git"
   - PACKAGE="mirage-stack"
   - PINS="mirage-stack:. mirage-stack-lwt:."
-  - EXTRA_REMOTES="https://github.com/mirage/mirage-dev.git"
   - REVDEPS=true
   - DEPOPTS="mirage-stack-lwt"
   matrix:
