@@ -19,3 +19,8 @@ build: [
   ["dune" "build" "-p" name "-j" jobs]
 ]
 dev-repo: "git+https://github.com/mirage/mirage-stack.git"
+synopsis: "MirageOS signatures for network stacks"
+description: """
+mirage-stack-lwt provides a set of module types which libraries intended to be
+used as MirageOS network stacks should implement.
+"""
