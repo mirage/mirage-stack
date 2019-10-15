@@ -4,13 +4,11 @@ install: wget https://raw.githubusercontent.com/ocaml/ocaml-ci-scripts/master/.t
 script: bash -ex .travis-opam.sh
 env:
   global:
-  - EXTRA_REMOTES="https://github.com/mirage/mirage-dev.git"
   - PACKAGE="mirage-stack"
-  - PINS="mirage-stack:. mirage-stack-lwt:."
+  - PINS="mirage-stack.2.0.0:. mirage-device.2.0.0:git+https://github.com/hannesm/mirage-device.git#easy mirage-protocols.4.0.0:git+https://github.com/hannesm/mirage-protocols.git#easy"
   - REVDEPS=true
-  - DEPOPTS="mirage-stack-lwt"
   matrix:
-  - OCAML_VERSION=4.04
-  - OCAML_VERSION=4.05
   - OCAML_VERSION=4.06
   - OCAML_VERSION=4.07
+  - OCAML_VERSION=4.08
+  - OCAML_VERSION=4.09

@@ -1,3 +1,7 @@
+### v2.0.0
+
+- remove mirage-stack-lwt package
+
 ### v1.4.0 (2019-02-24)
 
 - port build system to dune
