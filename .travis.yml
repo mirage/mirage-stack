@@ -5,7 +5,7 @@ script: bash -ex .travis-opam.sh
 env:
   global:
   - PACKAGE="mirage-stack"
-  - PINS="mirage-stack.2.0.0:. mirage-device.2.0.0:git+https://github.com/hannesm/mirage-device.git#easy mirage-protocols.4.0.0:git+https://github.com/hannesm/mirage-protocols.git#easy"
+  - PINS="mirage-stack:. mirage-device.2.0.0:git+https://github.com/hannesm/mirage-device.git#easy mirage-protocols.4.0.0:git+https://github.com/hannesm/mirage-protocols.git#easy mirage-flow.2.0.0:git+https://github.com/hannesm/mirage-flow.git#easy mirage-net.3.0.0:git+https://github.com/hannesm/mirage-net.git#easy"
   - REVDEPS=true
   matrix:
   - OCAML_VERSION=4.06
