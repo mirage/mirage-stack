@@ -14,7 +14,6 @@ depends: [
   "fmt"
   "lwt" {>= "4.4.0"}
 ]
-conflicts: [ "mirage-stack-lwt" ]
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
