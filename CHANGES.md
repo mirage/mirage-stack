@@ -1,3 +1,9 @@
+### v2.0.0 (2019-10-25)
+
+- remove mirage-stack-lwt package (#15 @hannesm)
+- specialise on Lwt.t and Cstruct.t directly (#15 @hannesm)
+- raise lower OCaml bound to 4.06.0 (#15 @hannesm)
+
 ### v1.4.0 (2019-02-24)
 
 - port build system to dune

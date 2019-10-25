@@ -7,11 +7,12 @@ homepage: "https://github.com/mirage/mirage-stack"
 doc: "https://mirage.github.io/mirage-stack/"
 bug-reports: "https://github.com/mirage/mirage-stack/issues"
 depends: [
-  "ocaml" {>= "4.04.2"}
+  "ocaml" {>= "4.06.0"}
   "dune" {>= "1.0"}
-  "mirage-device" {>= "1.0.0"}
-  "mirage-protocols" {>= "1.4.0"}
+  "mirage-device" {>= "2.0.0"}
+  "mirage-protocols" {>= "4.0.0"}
   "fmt"
+  "lwt" {>= "4.4.0"}
 ]
 build: [
   ["dune" "subst"] {pinned}
