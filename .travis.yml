@@ -7,7 +7,6 @@ services:
 env:
   global:
   - PACKAGE="mirage-stack"
-  - PINS="mirage-stack.2.0.0:."
   - DISTRO=alpine
   - REVDEPS=true
   matrix:
