@@ -1,3 +1,7 @@
+### v2.0.1 (2019-11-04)
+
+* provide deprecated Mirage_stack_lwt for smooth transition (#17 @hannesm)
+
 ### v2.0.0 (2019-10-25)
 
 - remove mirage-stack-lwt package (#15 @hannesm)
