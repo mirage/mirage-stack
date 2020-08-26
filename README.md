@@ -2,13 +2,12 @@
 
 mirage-stack provides a module types which libraries intended to be used as MirageOS network stacks should implement.
 
-The signature defined is:
-
-[Mirage_stack.STACKV4](stackv4)
+The signatures defined are [Mirage_stack.V4](stackv4) and [Mirage_stack.V6](stackv6).
 
 mirage-stack is distributed under the ISC license.
 
 [stackv4]: http://docs.mirage.io/mirage-stack/Mirage_stack/module-type-V4/index.html
+[stackv6]: http://docs.mirage.io/mirage-stack/Mirage_stack/module-type-V6/index.html
 
 ## Installation
 
