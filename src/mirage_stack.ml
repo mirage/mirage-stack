@@ -31,7 +31,52 @@ module type V4 = sig
   val listen_tcpv4: ?keepalive:Mirage_protocols.Keepalive.t
     -> t -> port:int -> (TCPV4.flow -> unit Lwt.t) -> unit
   (** [listen_tcpv4 ~keepalive t ~port cb] registers the [cb] callback
-      on the TCPv4 [port] and immediatey return.  If [port] is invalid (not
+      on the TCPv4 [port] and immediately return.  If [port] is invalid (not
+      between 0 and 65535 inclusive), it raises [Invalid_argument].
+      Multiple bindings to the same port will overwrite previous
+      bindings, so callbacks will not chain if ports clash.
+      If [~keepalive] is provided then these keepalive settings will be
+      applied to the accepted connections before the callback is called. *)
+
+  val listen: t -> unit Lwt.t
+  (** [listen t] requests that the stack listen for traffic on the
+      network interface associated with the stack, and demultiplex
+      traffic to the appropriate callbacks. *)
+end
+
+module type V6 = sig
+  include Mirage_device.S
+
+  module UDPV6: Mirage_protocols.UDPV6
+
+  module TCPV6: Mirage_protocols.TCPV6
+
+  module IPV6: Mirage_protocols.IPV6
+
+  val udpv6: t -> UDPV6.t
+  (** [udpv6 t] obtains a descriptor for use with the [UDPV6] module,
+      usually to transmit traffic. *)
+
+  val tcpv6: t -> TCPV6.t
+  (** [tcpv6 t] obtains a descriptor for use with the [TCPV6] module,
+      usually to initiate outgoing connections. *)
+
+  val ipv6: t -> IPV6.t
+  (** [ipv6 t] obtains a descriptor for use with the [IPV6] module,
+      which can handle raw IPv6 frames, or manipulate IP address
+      configuration on the stack interface. *)
+
+  val listen_udpv6: t -> port:int -> UDPV6.callback -> unit
+  (** [listen_udpv6 t ~port cb] registers the [cb] callback on the
+      UDPv6 [port] and immediately return.  If [port] is invalid (not
+      between 0 and 65535 inclusive), it raises [Invalid_argument].
+      Multiple bindings to the same port will overwrite previous
+      bindings, so callbacks will not chain if ports clash. *)
+
+  val listen_tcpv6: ?keepalive:Mirage_protocols.Keepalive.t
+    -> t -> port:int -> (TCPV6.flow -> unit Lwt.t) -> unit
+  (** [listen_tcpv6 ~keepalive t ~port cb] registers the [cb] callback
+      on the TCPv6 [port] and immediately return.  If [port] is invalid (not
       between 0 and 65535 inclusive), it raises [Invalid_argument].
       Multiple bindings to the same port will overwrite previous
       bindings, so callbacks will not chain if ports clash.
