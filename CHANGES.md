@@ -1,3 +1,7 @@
+### v2.1.0 (2020-08-31)
+
+* add Mirage_stack.V6 module type (#18 @MagnusS)
+
 ### v2.0.1 (2019-11-04)
 
 * provide deprecated Mirage_stack_lwt for smooth transition (#17 @hannesm)
