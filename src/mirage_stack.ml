@@ -88,3 +88,48 @@ module type V6 = sig
       network interface associated with the stack, and demultiplex
       traffic to the appropriate callbacks. *)
 end
+
+module type V4V6 = sig
+  include Mirage_device.S
+
+  module UDP: Mirage_protocols.UDP with type ipaddr = Ipaddr.t
+
+  module TCP: Mirage_protocols.TCP with type ipaddr = Ipaddr.t
+
+  module IP: Mirage_protocols.IP with type ipaddr = Ipaddr.t
+
+  val udp: t -> UDP.t
+  (** [udp t] obtains a descriptor for use with the [UDP] module,
+      usually to transmit traffic. *)
+
+  val tcp: t -> TCP.t
+  (** [tcp t] obtains a descriptor for use with the [TCP] module,
+      usually to initiate outgoing connections. *)
+
+  val ip: t -> IP.t
+  (** [ip t] obtains a descriptor for use with the [IP] module,
+      which can handle raw IPv4 and IPv6 frames, or manipulate IP address
+      configuration on the stack interface. *)
+
+  val listen_udp: t -> port:int -> UDP.callback -> unit
+  (** [listen_udp t ~port cb] registers the [cb] callback on the
+      UDP [port] and immediately return.  If [port] is invalid (not
+      between 0 and 65535 inclusive), it raises [Invalid_argument].
+      Multiple bindings to the same port will overwrite previous
+      bindings, so callbacks will not chain if ports clash. *)
+
+  val listen_tcp: ?keepalive:Mirage_protocols.Keepalive.t
+    -> t -> port:int -> (TCP.flow -> unit Lwt.t) -> unit
+  (** [listen_tcp ~keepalive t ~port cb] registers the [cb] callback
+      on the TCP [port] and immediately return.  If [port] is invalid (not
+      between 0 and 65535 inclusive), it raises [Invalid_argument].
+      Multiple bindings to the same port will overwrite previous
+      bindings, so callbacks will not chain if ports clash.
+      If [~keepalive] is provided then these keepalive settings will be
+      applied to the accepted connections before the callback is called. *)
+
+  val listen: t -> unit Lwt.t
+  (** [listen t] requests that the stack listen for traffic on the
+      network interface associated with the stack, and demultiplex
+      traffic to the appropriate callbacks. *)
+end
