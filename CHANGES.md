@@ -1,3 +1,7 @@
+### v2.2.0 (2020-09-28)
+
+* add Mirage_stack.V4V6 module type (#19 @hannesm)
+
 ### v2.1.0 (2020-08-31)
 
 * add Mirage_stack.V6 module type (#18 @MagnusS)
