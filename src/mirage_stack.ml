@@ -1,6 +1,11 @@
 module type V4 = sig
 
-  include Mirage_device.S
+  type t
+  (** The type representing the internal state of the IPv4 stack. *)
+
+  val disconnect: t -> unit Lwt.t
+  (** Disconnect from the IPv4 stack. While this might take some time to
+      complete, it can never result in an error. *)
 
   module UDPV4: Mirage_protocols.UDPV4
 
@@ -22,15 +27,16 @@ module type V4 = sig
       configuration on the stack interface. *)
 
   val listen_udpv4: t -> port:int -> UDPV4.callback -> unit
+  [@@ocaml.deprecated "use UDPV4.listen instead (since mirage-protocols 6.0.0)."]
   (** [listen_udpv4 t ~port cb] registers the [cb] callback on the
       UDPv4 [port] and immediately return.  If [port] is invalid (not
       between 0 and 65535 inclusive), it raises [Invalid_argument].
       Multiple bindings to the same port will overwrite previous
       bindings, so callbacks will not chain if ports clash. *)
-  [@@ocaml.deprecated "use UDPV4.listen instead (since mirage-protocols 6.0.0)."]
 
   val listen_tcpv4: ?keepalive:Mirage_protocols.Keepalive.t
     -> t -> port:int -> (TCPV4.flow -> unit Lwt.t) -> unit
+  [@@ocaml.deprecated "use TCPV4.listen instead (since mirage-protocols 6.0.0)."]
   (** [listen_tcpv4 ~keepalive t ~port cb] registers the [cb] callback
       on the TCPv4 [port] and immediately return.  If [port] is invalid (not
       between 0 and 65535 inclusive), it raises [Invalid_argument].
@@ -38,7 +44,6 @@ module type V4 = sig
       bindings, so callbacks will not chain if ports clash.
       If [~keepalive] is provided then these keepalive settings will be
       applied to the accepted connections before the callback is called. *)
-  [@@ocaml.deprecated "use TCPV4.listen instead (since mirage-protocols 6.0.0)."]
 
   val listen: t -> unit Lwt.t
   (** [listen t] requests that the stack listen for traffic on the
@@ -47,7 +52,12 @@ module type V4 = sig
 end
 
 module type V6 = sig
-  include Mirage_device.S
+  type t
+  (** The type representing the internal state of the IPv6 stack. *)
+
+  val disconnect: t -> unit Lwt.t
+  (** Disconnect from the IPv6 stack. While this might take some time to
+      complete, it can never result in an error. *)
 
   module UDP: Mirage_protocols.UDPV6
 
@@ -69,15 +79,16 @@ module type V6 = sig
       configuration on the stack interface. *)
 
   val listen_udp: t -> port:int -> UDP.callback -> unit
+  [@@ocaml.deprecated "use UDP.listen instead (since mirage-protocols 6.0.0)."]
   (** [listen_udp t ~port cb] registers the [cb] callback on the
       UDPv6 [port] and immediately return.  If [port] is invalid (not
       between 0 and 65535 inclusive), it raises [Invalid_argument].
       Multiple bindings to the same port will overwrite previous
       bindings, so callbacks will not chain if ports clash. *)
-  [@@ocaml.deprecated "use UDP.listen instead (since mirage-protocols 6.0.0)."]
 
   val listen_tcp: ?keepalive:Mirage_protocols.Keepalive.t
     -> t -> port:int -> (TCP.flow -> unit Lwt.t) -> unit
+  [@@ocaml.deprecated "use TCP.listen instead (since mirage-protocols 6.0.0)."]
   (** [listen_tcp ~keepalive t ~port cb] registers the [cb] callback
       on the TCPv6 [port] and immediately return.  If [port] is invalid (not
       between 0 and 65535 inclusive), it raises [Invalid_argument].
@@ -85,7 +96,6 @@ module type V6 = sig
       bindings, so callbacks will not chain if ports clash.
       If [~keepalive] is provided then these keepalive settings will be
       applied to the accepted connections before the callback is called. *)
-  [@@ocaml.deprecated "use TCP.listen instead (since mirage-protocols 6.0.0)."]
 
   val listen: t -> unit Lwt.t
   (** [listen t] requests that the stack listen for traffic on the
@@ -94,7 +104,12 @@ module type V6 = sig
 end
 
 module type V4V6 = sig
-  include Mirage_device.S
+  type t
+  (** The type representing the internal state of the dual IPv4 and IPv6 stack. *)
+
+  val disconnect: t -> unit Lwt.t
+  (** Disconnect from the dual IPv4 and IPv6 stack. While this might take some
+      time to complete, it can never result in an error. *)
 
   module UDP: Mirage_protocols.UDP with type ipaddr = Ipaddr.t
 
@@ -116,15 +131,16 @@ module type V4V6 = sig
       configuration on the stack interface. *)
 
   val listen_udp: t -> port:int -> UDP.callback -> unit
+  [@@ocaml.deprecated "use UDP.listen instead (since mirage-protocols 6.0.0)."]
   (** [listen_udp t ~port cb] registers the [cb] callback on the
       UDP [port] and immediately return.  If [port] is invalid (not
       between 0 and 65535 inclusive), it raises [Invalid_argument].
       Multiple bindings to the same port will overwrite previous
       bindings, so callbacks will not chain if ports clash. *)
-  [@@ocaml.deprecated "use UDP.listen instead (since mirage-protocols 6.0.0)."]
 
   val listen_tcp: ?keepalive:Mirage_protocols.Keepalive.t
     -> t -> port:int -> (TCP.flow -> unit Lwt.t) -> unit
+  [@@ocaml.deprecated "use TCP.listen instead (since mirage-protocols 6.0.0)."]
   (** [listen_tcp ~keepalive t ~port cb] registers the [cb] callback
       on the TCP [port] and immediately return.  If [port] is invalid (not
       between 0 and 65535 inclusive), it raises [Invalid_argument].
@@ -132,7 +148,6 @@ module type V4V6 = sig
       bindings, so callbacks will not chain if ports clash.
       If [~keepalive] is provided then these keepalive settings will be
       applied to the accepted connections before the callback is called. *)
-  [@@ocaml.deprecated "use TCP.listen instead (since mirage-protocols 6.0.0)."]
 
   val listen: t -> unit Lwt.t
   (** [listen t] requests that the stack listen for traffic on the

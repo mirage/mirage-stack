@@ -1,5 +1,4 @@
 (library
  (name mirage_stack)
  (public_name mirage-stack)
- (libraries mirage-protocols mirage-device fmt lwt)
- (wrapped false))
+ (libraries mirage-protocols fmt lwt))
