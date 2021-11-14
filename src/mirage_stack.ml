@@ -27,6 +27,7 @@ module type V4 = sig
       between 0 and 65535 inclusive), it raises [Invalid_argument].
       Multiple bindings to the same port will overwrite previous
       bindings, so callbacks will not chain if ports clash. *)
+  [@@ocaml.deprecated "use UDPV4.listen instead (since mirage-protocols 6.0.0)."]
 
   val listen_tcpv4: ?keepalive:Mirage_protocols.Keepalive.t
     -> t -> port:int -> (TCPV4.flow -> unit Lwt.t) -> unit
@@ -37,6 +38,7 @@ module type V4 = sig
       bindings, so callbacks will not chain if ports clash.
       If [~keepalive] is provided then these keepalive settings will be
       applied to the accepted connections before the callback is called. *)
+  [@@ocaml.deprecated "use TCPV4.listen instead (since mirage-protocols 6.0.0)."]
 
   val listen: t -> unit Lwt.t
   (** [listen t] requests that the stack listen for traffic on the
@@ -72,6 +74,7 @@ module type V6 = sig
       between 0 and 65535 inclusive), it raises [Invalid_argument].
       Multiple bindings to the same port will overwrite previous
       bindings, so callbacks will not chain if ports clash. *)
+  [@@ocaml.deprecated "use UDP.listen instead (since mirage-protocols 6.0.0)."]
 
   val listen_tcp: ?keepalive:Mirage_protocols.Keepalive.t
     -> t -> port:int -> (TCP.flow -> unit Lwt.t) -> unit
@@ -82,6 +85,7 @@ module type V6 = sig
       bindings, so callbacks will not chain if ports clash.
       If [~keepalive] is provided then these keepalive settings will be
       applied to the accepted connections before the callback is called. *)
+  [@@ocaml.deprecated "use TCP.listen instead (since mirage-protocols 6.0.0)."]
 
   val listen: t -> unit Lwt.t
   (** [listen t] requests that the stack listen for traffic on the
@@ -117,6 +121,7 @@ module type V4V6 = sig
       between 0 and 65535 inclusive), it raises [Invalid_argument].
       Multiple bindings to the same port will overwrite previous
       bindings, so callbacks will not chain if ports clash. *)
+  [@@ocaml.deprecated "use UDP.listen instead (since mirage-protocols 6.0.0)."]
 
   val listen_tcp: ?keepalive:Mirage_protocols.Keepalive.t
     -> t -> port:int -> (TCP.flow -> unit Lwt.t) -> unit
@@ -127,6 +132,7 @@ module type V4V6 = sig
       bindings, so callbacks will not chain if ports clash.
       If [~keepalive] is provided then these keepalive settings will be
       applied to the accepted connections before the callback is called. *)
+  [@@ocaml.deprecated "use TCP.listen instead (since mirage-protocols 6.0.0)."]
 
   val listen: t -> unit Lwt.t
   (** [listen t] requests that the stack listen for traffic on the
