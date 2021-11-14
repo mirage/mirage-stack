@@ -1,3 +1,10 @@
+### v3.0.0
+
+* Remove Mirage_stack_lwt module
+* mark listen_{tcp(v4),udp(v4)} as deprecated, now that mirage-protocols 6.0.0
+  contains UDP.listen and TCP.listen
+* Remove mirage-device dependency
+
 ### v2.2.0 (2020-09-28)
 
 * add Mirage_stack.V4V6 module type (#19 @hannesm)
