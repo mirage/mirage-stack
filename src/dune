@@ -1,4 +1,4 @@
 (library
  (name mirage_stack)
  (public_name mirage-stack)
- (libraries mirage-protocols fmt lwt))
+ (libraries tcpip))
