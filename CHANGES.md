@@ -1,3 +1,8 @@
+### v4.0.0 (2021-12-15)
+
+* Deprecate mirage-stack. The module types are now part of tcpip (>= 7.0.0)
+  (#21 @hannesm)
+
 ### v3.0.0 (2021-11-15)
 
 * Remove Mirage_stack_lwt module (#20 @hannesm)

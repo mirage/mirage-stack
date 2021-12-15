@@ -21,3 +21,6 @@ description: """
 mirage-stack provides a set of module types which libraries intended to be used
 as MirageOS network stacks should implement.
 """
+post-messages: [
+  "This package is deprecated. Please use the module types in Tcpip.Stack directly."
+]
